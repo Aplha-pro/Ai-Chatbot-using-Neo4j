@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://kit.fontawesome.com/Kit ID.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #111;
+      font-family: sans-serif;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      padding: 40px;
+      background-color: #222;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 36px;
+      color: #fff;
+    }
+    .fas {
+      font-size: 100px;
+      color: #fff;
+    }
+    .input-field {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid #fff;
+      color: #fff;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #23a8e0;
+    }
+    .login-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #23a8e0;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .login-btn:hover {
+      background-color: #0572a4;
+    }
+    .signup-link {
+      margin-top: 20px;
+      color: #fff;
+      font-size: 16px;
+    }
+    .signup-link a {
+      color: #23a8e0;
+      text-decoration: none;
+    }
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <i class="fas fa-lock"></i>
+  <h1>Login</h1>
+  <form id="login-form" method="post" action="">
+    {% csrf_token %}
+    <input class="input-field" type="text" placeholder="Username" id="username" name="username" required>
+    <input class="input-field" type="password" placeholder="Password" id="password" name="password" required>
+    <button class="login-btn" type="submit">Login</button>
+  </form>
+  <div class="signup-link">Don't have an account? <a href="/signup">Sign up</a></div>
+</div>
+
+<script>
+  const loginForm = document.getElementById("login-form");
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // Send a POST request to the login endpoint
+    fetch("/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": "{{ csrf_token }}",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Redirect to the chatbox page
+          window.location.href = "/chatbox/";
+        } else {
+          alert("Invalid username or password");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
+</script>
+</body>
+</html>
+{% endblock body %}

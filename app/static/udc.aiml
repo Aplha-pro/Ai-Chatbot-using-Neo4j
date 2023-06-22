@@ -1,0 +1,51 @@
+<aiml>
+<category>
+  <pattern>HELLO</pattern>
+  <template>
+    <random>
+      <li>Hi there! How can I assist you?</li>
+      <li>Hello! What can I help you with?</li>
+      <li>Hey! How can I be of assistance today?</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>HI</pattern>
+  <template>
+      <srai>HELLO</srai>
+  </template>
+</category>
+
+<category>
+  <pattern>HEY</pattern>
+  <template>
+    <random>
+      <li>Hi there! How can I assist you?</li>
+      <li>Hello! What can I help you with?</li>
+      <li>Hey! How can I be of assistance today?</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>GOOD MORNING</pattern>
+  <template>
+    Good morning! How can I assist you today? 
+  </template>
+</category>
+
+<category>
+  <pattern>GOOD AFTERNOON</pattern>
+  <template>
+    Good afternoon! How can I help you today? 
+  </template>
+</category>
+
+<category>
+  <pattern>GOOD EVENING</pattern>
+  <template>
+    Good evening! How may I assist you today? 
+  </template>
+</category>
+</aiml>
