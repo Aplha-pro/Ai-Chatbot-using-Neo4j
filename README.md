@@ -1,5 +1,5 @@
 # Chat_Bot
-**Registration:** Visit the M-Bot website and complete the registration process by providing your username, email address, and other required details.
+**Registration:** Complete the registration process by providing your username, email address, and other required details.
 
 **Login:** Use your registered credentials to log in to your M-Bot account.
 
